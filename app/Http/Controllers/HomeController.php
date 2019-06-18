@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Hash;
 
 class HomeController extends Controller
 {
@@ -64,6 +65,16 @@ class HomeController extends Controller
     public function logOutView()
     {
         return 'logout';
+    }
+
+    public function checkLoing(Request $request)
+    {
+        $input = $request->all();
+        $user = (new User())->getUserByEmail(strtolower(trim($input['email'])));
+        if (!$user || !Hash::check($input['password'], $user->password)) {
+            return 'success';
+        }
+        return false;
     }
 }
 

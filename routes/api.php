@@ -22,6 +22,7 @@ use Illuminate\Http\Request;
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/save', 'HomeController@save')->name('save');
 Route::get('/login', 'HomeController@login');
+Route::post('/login', 'HomeController@checkLoing');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/logout', 'HomeController@logOut');
 Route::get('/logout-view', 'HomeController@logOutView')->name('logoutView');

@@ -90,5 +90,10 @@ class User extends Eloquent
             return false;
         return parent::save($options);
     }
+
+    public function getUserByEmail($email)
+    {
+        return self::where('email', $email)->first();
+    }
 }
 

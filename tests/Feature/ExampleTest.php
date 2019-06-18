@@ -9,7 +9,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 class ExampleTest extends TestCase
 {
     /********************** SESSION 5 ENDS*************************************************/
-    use WithFaker, RefreshDatabase;
+    use WithFaker;
+    use RefreshDatabase;
     private $data;
     public function setUp(): void {
         parent::setUp();
@@ -62,6 +63,11 @@ class ExampleTest extends TestCase
     public function testLogOutRoute()
     {
         $this->get('api/logout')->assertRedirect('api/logout-view');
+    }
+   
+    public function testCheckLoginRoute()
+    {
+        $this->post('api/login', $this->data)->assertSee('success')->assertStatus(200);
     }
     /********************** SESSION 5 ENDS*************************************************/
     /********************** SESSION 3 STARTS*************************************************/
