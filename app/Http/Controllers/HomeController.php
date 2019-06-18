@@ -56,5 +56,14 @@ class HomeController extends Controller
     {
         return 'dashobard';
     }
+
+    public function logOut()
+    {
+        return redirect()->route('logoutView');
+    }
+    public function logOutView()
+    {
+        return 'logout';
+    }
 }
 

@@ -23,3 +23,5 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::post('/save', 'HomeController@save')->name('save');
 Route::get('/login', 'HomeController@login');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+Route::get('/logout', 'HomeController@logOut');
+Route::get('/logout-view', 'HomeController@logOutView')->name('logoutView');

@@ -59,6 +59,10 @@ class ExampleTest extends TestCase
     {
         $this->get('api/login')->assertRedirect('api/dashboard');
     }
+    public function testLogOutRoute()
+    {
+        $this->get('api/logout')->assertRedirect('api/logout-view');
+    }
     /********************** SESSION 5 ENDS*************************************************/
     /********************** SESSION 3 STARTS*************************************************/
     public function testHelloWorld() {
