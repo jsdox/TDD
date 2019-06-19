@@ -31,7 +31,10 @@ class HomeController extends Controller
     public function test(Request $request)
     {
         $input = $request->all();
-        User::create($input);
+        $data_saved = User::create($input);
+        if(!$data_saved) {
+            return $data_saved->getErrors();
+        }
     }
     public function save(Request $request)
     {

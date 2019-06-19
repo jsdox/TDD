@@ -10,7 +10,7 @@ use App\User;
 class UserTest extends TestCase
 {
     use WithFaker;
-//    use RefreshDatabase;
+    use RefreshDatabase;
     
     public function setUp(): void {
         parent::setUp();
