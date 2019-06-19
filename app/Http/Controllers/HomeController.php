@@ -28,24 +28,19 @@ class HomeController extends Controller
        return "Laravel";
     }
 
+    public function test(Request $request)
+    {
+        $input = $request->all();
+        User::create($input);
+    }
     public function save(Request $request)
     {
         $input = $request->all();
         $object = new User($input);
-        if ($object->save($input)) {
+        if ($object->save()) {
             return 'data_saved';
         }
         return $object->getErrors();
-//         if ($object->save($input)) {
-//                return 'data_savede';
-//            }
-//        if ($object->validate($input)){
-//            if ($object->save()) {
-//                return 'data_savede';
-//            }
-//        } else {
-//          return $object->errors();
-//        }
     }
 
     public function login()

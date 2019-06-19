@@ -5,10 +5,12 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use App\User;
 
-class ExampleTest extends TestCase
+class UserTest extends TestCase
 {
-    use WithFaker, RefreshDatabase;
+    use WithFaker;
+//    use RefreshDatabase;
     
     public function setUp(): void {
         parent::setUp();
@@ -30,11 +32,22 @@ class ExampleTest extends TestCase
         $this->assertNotEmpty(['hello']);
         $this->assertEquals(true, true);
     }
+    
+    public function testSaveData()
+    {
+        $user = factory(User::class)->create($this->data);
+        $this->assertNotEmpty($user);
+        return $user;
+    }
 
-//    public function testLogin()
-//    {
-//
-//    }
-
+   
+    public function testGetUserByEmail()
+    {
+        $data = User::create($this->data);
+        $object = new User();
+        $data = $object->getUserByEmail($data['email']);
+//        print_r($data);exit;
+        $this->assertNotEmpty($data);
+    }
 
 }

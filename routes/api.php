@@ -26,3 +26,4 @@ Route::post('/login', 'HomeController@checkLoing');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/logout', 'HomeController@logOut');
 Route::get('/logout-view', 'HomeController@logOutView')->name('logoutView');
+Route::post('/test', 'HomeController@test');

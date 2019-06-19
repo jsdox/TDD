@@ -8,15 +8,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\BaseModel;
 use Validator;
 use Illuminate\Database\Eloquent\Model as Eloquent;
-class User extends Eloquent
+class User extends BaseModel
 {
     use Notifiable;
 //    private $errors;
 
-    use \App\Traits\CustomValidator
-    {
-        validateObject as protected traitValidateObject;
-    }
+//    use \App\Traits\CustomValidator
+//    {
+//        validateObject as protected traitValidateObject;
+//    }
 
     /**
      * The attributes that are mass assignable.
@@ -45,7 +45,7 @@ class User extends Eloquent
         'email_verified_at' => 'datetime',
     ];
 
-    public static $_rules = [
+    protected static $rules = [
         'name' => 'required',
         'email' => 'required|unique:users|regex:/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/',
         'password'  => 'required',
@@ -67,13 +67,13 @@ class User extends Eloquent
 //        return $this->errors;
 //    }
     
-    public function __construct(array $attributes = [])
-    {
-       parent::__construct($attributes);
-       if (count($attributes)) {
-            $this->setDataInternally($attributes);
-       }
-    }
+//    public function __construct(array $attributes = [])
+//    {
+//       parent::__construct($attributes);
+//       if (count($attributes)) {
+//            $this->setDataInternally($attributes);
+//       }
+//    }
     
     public function setDataInternally($attributes = [])
     {
@@ -84,12 +84,12 @@ class User extends Eloquent
         return true;
     }
     
-    public function save(array $options = [])
-    {
-        if (!$this->traitValidateObject($options))
-            return false;
-        return parent::save($options);
-    }
+//    public function save(array $options = [])
+//    {
+//        if (!$this->traitValidateObject($options))
+//            return false;
+//        return parent::save($options);
+//    }
 
     public function getUserByEmail($email)
     {
